@@ -17,13 +17,13 @@
 
 ### Visualization
 To see training process of English parsing on a free PTB devel set (section 00),
-- `./visualization.py '000/lstm_nccp/0.stratified.ptb.L85R15/ptb_devel'` (binary, empirical linear compleixty)
+- `./visualization.py '000/lstm_nccp/0.stratified.ptb.L85R15/ptb_devel'` (binary, empirical $O(n)$ compleixty)
 
 To see English parsing on a free PTB test set (section 01),
-- `./visualization.py '000/lstm_nccp/1.triangular.ptb.L85R15/ptb_devel'` (binary, squared complexity).
+- `./visualization.py '000/lstm_nccp/1.triangular.ptb.L85R15/ptb_test'` (binary, $O(n^2)$ complexity).
 
 For multi-branching tree visualization with headedness (section 01),
-- Check `'000/lstm_accp/0.multi.branching.ptb/ptb_devel/*.art'` text files.
+- Check `'000/lstm_accp/0.multi.branching.ptb/ptb_devel/*.art'` text files. (empirical $O(n^2)$ complexity)
 
 (We use freely available Penn Treebank/PTB sections for this visualization.)
 
