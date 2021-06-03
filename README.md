@@ -1,4 +1,4 @@
-# Neural Combinatory Constituency Parsers (version = ACL2021 Findings)
+# Neural Combinatory Constituency Parsers
 
 ![NCCP](000/figures/nccp.gif)
 
@@ -18,21 +18,24 @@
 ### Visualization
 To see training process of English parsing on a free PTB devel set (section 00),
 - `./visualization.py '000/lstm_nccp/0.stratified.ptb.L85R15/ptb_devel'` (binary, empirical linear compleixty)
+
 To see English parsing on a free PTB test set (section 01),
 - `./visualization.py '000/lstm_nccp/1.triangular.ptb.L85R15/ptb_devel'` (binary, squared complexity).
+
 For multi-branching tree visualization with headedness (section 01),
 - Check `'000/lstm_accp/0.multi.branching.ptb/ptb_devel/*.art'` text files.
+
 (We use freely available Penn Treebank/PTB sections for this visualization.)
 
 If you want to see more, please download our pre-trained models in [000.zip](http://cl.sd.tmu.ac.jp/~zchen/000.zip).
+
 You may run our pre-trained models on your test sets.
 Or, you may also train a new model with your own corpus to see more details.
 To do that, you need to prepare data by setting a configuration, e.g., `000/manager.yaml`.
 
 ### Test a Pre-Trained Models
-- Set `data:ptb:source_path:` to your PTB/WSJ folder, and then use `./manager.py 000 -p` to prepare the data.
-- Set items under `tool:evalb:` for testing F1 scores.
-  - Use `./manager.py 000` to check the status. Any improper configuration will be prompted.
+- Set key `data:ptb:source_path:` in `000/manager.yaml` to your PTB/WSJ folder, and then use `./manager.py 000 -p` to prepare the data.
+- Set keys under `tool:evalb:` for F1 scores. (Use `./manager.py 000` to check the status. Any improper configuration will be prompted.)
 - Use `./manager.py 000 -s lstm_nccp -i0` to test the pre-train binary model on stratified PTB test set.
   - Add `-g [GPU ID]` to choose a GPU; the default is 0.
   - Use `./visualization.py '000/lstm_nccp/0.stratified.L85R15.ptb/ptb_test'` to see local visualization or add ` -h [server address] -p [port]` to see remote one.
