@@ -324,7 +324,7 @@ def get_tree_from_signals(word, tag, layers_of_labels, layers_of_splits,
         tree = bottom.pop()
         assert not bottom
     elif len(bottom) > 1:
-        if layers_of_weights and layers_of_weights[lid + 1]: # never be here
+        if layers_of_weights and len(layers_of_weights[lid + 1]): # never be here
             bottom, head_idx = flatten_children_with_weights(bottom, 0, layers_of_weights[lid + 1])
         else:
             bottom = flatten_children(bottom)
