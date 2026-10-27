@@ -36,7 +36,7 @@ def __entry(panel, value, callback, gui_kwargs):
         def spin_click(*event):
             callback(None) # ???
         # gui.bind('<Button-1>', lambda *e: callback(None))
-        var.trace('w', spin_click)
+        var.trace_add('write', spin_click)
     else:
         gui = Entry(panel, **common_args)
     var.set(value) # even no initial value?
