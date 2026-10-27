@@ -1667,6 +1667,7 @@ if desktop:
                 frame  = CanvasFrame()
                 canvas = frame.canvas()
 
+            pad = 20
             if self._head.tree:
                 label = Tree.fromstring(self._head.tree)
                 label.set_label(label.label() + ' (corpus)')
@@ -1676,7 +1677,6 @@ if desktop:
                 below = label.bbox()[3] + pad
             else:
                 below = 0
-            pad = 20
             inc = 0
             right_bound = canvas.winfo_screenwidth() # pixel w.r.t hidpi (2x on this mac)
 
