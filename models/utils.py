@@ -4,8 +4,8 @@ class PCA:
         emb_mean = torch.mean(emb, dim = 0)
         emb_shifted = emb - emb_mean
         emb_cov = torch.matmul(emb_shifted.T, emb_shifted)
-        val, vec = torch.eig(emb_cov, True)
-        _, idx = val[:, 0].topk(k) # ignore value & image part
+        val, vec = torch.linalg.eigh(emb_cov) # emb_cov is symmetric; torch.eig was removed
+        _, idx = val.topk(k)
         self._bases = vec[:, idx] # both tensorflow and torch use dim = 1
 
     def __call__(self, emb):

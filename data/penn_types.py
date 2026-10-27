@@ -126,6 +126,9 @@ def select_and_split_corpus(corp_name, corp_path,
     from nltk.corpus import BracketParseCorpusReader
     if corp_name == C_PTB:
         folder_pattern = lambda x: f'{x:02}'
+        import nltk.data # nltk >= 3.10 only reads corpora under its trusted data paths
+        if corp_path not in nltk.data.path:
+            nltk.data.path.append(corp_path)
         reader = BracketParseCorpusReader(corp_path, r".*/wsj_.*\.mrg")
         def get_id(fpath):
             bar = fpath.index('/') # 23/xxx_0000.xxx
