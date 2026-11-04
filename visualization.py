@@ -2355,10 +2355,7 @@ if desktop:
             print('Please provide an folder with -d/--dir', file = sys.stderr)
             exit()
         if args.port > 0 or args.host != 'localhost':
-            import pysftp
             import paramiko
-            cnopts = pysftp.CnOpts()
-            cnopts.hostkeys = None
             hostname = args.host
             username = args.username
             port     = args.port
@@ -2376,11 +2373,16 @@ if desktop:
 
             password = getpass.getpass('Password for %s:' % username)
             # try:
-            sftp = pysftp.Connection(hostname,
-                                     username = username,
-                                     password = password,
-                                     port     = port,
-                                     cnopts   = cnopts)
+            ssh = paramiko.SSHClient()
+            ssh.load_system_host_keys()
+            ssh.set_missing_host_key_policy(paramiko.WarningPolicy()) # unknown hosts were accepted with pysftp too
+            ssh.connect(hostname,
+                        port     = int(port) if int(port) > 0 else 22,
+                        username = username,
+                        password = password,
+                        allow_agent  = False, # password only, as with pysftp
+                        look_for_keys = False)
+            sftp = ssh.open_sftp()
             files = sftp.listdir(args.dir)
             return PathWrapper(args.dir, sftp)
         return PathWrapper(args.dir, None)
