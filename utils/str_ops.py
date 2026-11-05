@@ -100,27 +100,27 @@ def strange_to(string, unit_op = lambda x:x, include_end_to_range = True):
 
 def hex_ratio(x):
     assert 0 <= x <= 1
-    return '0123456789abcdef'[int(16 * x - 1e-8)]
+    return '0123456789abcdef'[int(16 * float(x) - 1e-8)]
 
 def hw_ratio(x):
     assert 0 <= x <= 1
-    return ' ▁▂▃▄▅▆▇ ▏▎▍▌▋▊▉'[int(16 * x - 1e-8)]
+    return ' ▁▂▃▄▅▆▇ ▏▎▍▌▋▊▉'[int(16 * float(x) - 1e-8)]
 
 def wh_ratio(x):
     assert 0 <= x <= 1
-    return '  ▏▎▍▌▋▊▁▂▃▄▅▆▇▉'[int(16 * x - 1e-8)]
+    return '  ▏▎▍▌▋▊▁▂▃▄▅▆▇▉'[int(16 * float(x) - 1e-8)]
 
 def width_ratio(x):
     assert 0 <= x <= 1
-    return '▏▎▍▌▋▊▉'[int(7 * x - 1e-8)]
+    return '▏▎▍▌▋▊▉'[int(7 * float(x) - 1e-8)]
 
 def height_ratio(x):
     assert 0 <= x <= 1
-    return '▁▂▃▄▅▆▇▉'[int(8 * x - 1e-8)]
+    return '▁▂▃▄▅▆▇▉'[int(8 * float(x) - 1e-8)]
 
 def space_height_ratio(x):
     assert 0 <= x <= 1
-    return ' ▁▂▃▄▅▆▇▉'[int(9 * x - 1e-8)]
+    return ' ▁▂▃▄▅▆▇▉'[int(9 * float(x) - 1e-8)]
 
 def str_ruler(length, upper = True, append_length = True):
     unit = '┃╵╵╵╵╿╵╵╵╵' if upper else '┃╷╷╷╷╽╷╷╷╷'
